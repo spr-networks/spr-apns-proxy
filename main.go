@@ -204,9 +204,11 @@ func notification(w http.ResponseWriter, r *http.Request) {
 	//forward encrypted notification
 	if len(data.EncryptedData) > 0 {
 		err = sendNotificationEncrypted(id, data.EncryptedData)
-	} else {
-		//TODO forward data
+	} else if data.Aps.Alert != nil {
 		err = sendNotification(id, *data.Aps.Alert)
+	} else {
+		http.Error(w, "invalid json", 400)
+		return
 	}
 
 	if err != nil {
