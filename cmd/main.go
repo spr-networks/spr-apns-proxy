@@ -1,15 +1,15 @@
 package main
 
 import (
-"flag"
-"log"
-"os"
+	"flag"
+	"log"
+	"os"
 
-apnsproxy "github.com/spr-networks/spr-apns-proxy"
+	"github.com/spr-networks/spr-apns-proxy"
 )
 
 var (
-    ErrorLogger   *log.Logger
+	ErrorLogger *log.Logger
 )
 
 var PrivateKey = os.Getenv("PRIVKEY")
