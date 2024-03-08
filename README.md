@@ -62,6 +62,16 @@ on localhost with data:
 will need to setup a notification handler to decrypt the data in the ios app.
 see more in apple docs: [Modifying content in newly delivered notifications](https://developer.apple.com/documentation/usernotifications/modifying_content_in_newly_delivered_notifications/)
 
+### Testing
+
+test sending notifications to your device when proxy is running::
+
+```bash
+export DEVICE_TOKEN="yourdevicetokenhere"
+export PROXY_URL="http://localhost:8000" # default
+go test -v
+```
+
 # Read more
 
 Read more here on JWT tokens and sending requests with apple:
