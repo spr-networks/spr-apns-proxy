@@ -9,7 +9,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-    "os"
+	"os"
 	"regexp"
 	"strings"
 	"time"
@@ -26,7 +26,7 @@ var InfoLogger = log.New(os.Stdout, "INFO: ", log.Ldate|log.Ltime|log.Lshortfile
 var WarningLogger = log.New(os.Stdout, "WARNING: ", log.Ldate|log.Ltime|log.Lshortfile)
 var ErrorLogger = log.New(os.Stdout, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
 
-//TODO dups
+// TODO dups
 var PrivateKey = os.Getenv("PRIVKEY")
 var AuthKeyId = os.Getenv("AUTH_KEY_ID")
 var TeamId = os.Getenv("TEAM_ID")
@@ -68,7 +68,6 @@ func SendProxyNotification(host string, id string, a APNS) error {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Println("superd request failed", err)
 		return err
 	}
 
@@ -274,5 +273,5 @@ func NewServer(ip string, port int) {
 	router := mux.NewRouter()
 	router.HandleFunc("/device/{id}", notification).Methods("PUT", "POST")
 	http.ListenAndServe(fmt.Sprintf("%s:%d", ip, port), logRequest(router))
-    //TODO handle if something is listening on the same port
+	//TODO handle if something is listening on the same port
 }
