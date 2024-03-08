@@ -1,4 +1,4 @@
-module main
+module github.com/spr-networks/spr-apns-proxy
 
 go 1.21
 

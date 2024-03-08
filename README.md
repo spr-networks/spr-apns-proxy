@@ -39,6 +39,7 @@ export TOPIC="org.supernetworks.app" # appid
 
 start http proxy server:
 ```bash
+cd cmd && go build
 ./main
 # start http server on 127.0.0.1:8000
 ```
