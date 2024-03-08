@@ -67,3 +67,11 @@ see more in apple docs: [Modifying content in newly delivered notifications](htt
 Read more here on JWT tokens and sending requests with apple:
 - [Sending push notifications using command-line tools](https://developer.apple.com/documentation/usernotifications/sending-push-notifications-using-command-line-tools#Send-a-Push-Notification-Using-a-Token)
 - [Revoke, edit, and download keys](https://developer.apple.com/help/account/manage-keys/revoke-edit-and-download-keys)
+
+## Notes on device tokens
+
+If you install your app on a device, then get a device token by calling registerForRemoteNotifications method, the device token will not expire until the app was deleted on the device. It also doesn’t expire when your app updates to a new version or the iOS system reboots.
+
+If you app has been deleted on a device, and then a notification is sent to the app once, then the previous device token will be marked as “not in use”.
+
+APNs may start returning a "410 Unregistered" status for the token which has been determined to be no longer in use.
