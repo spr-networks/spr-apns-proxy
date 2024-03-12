@@ -125,7 +125,11 @@ func SendNotificationEncrypted(id string, data string) error {
 
 func sendNotificationData(id string, data []byte, pushType string) error {
 	InfoLogger.Println("data=", string(data))
-	url := fmt.Sprintf("https://api.sandbox.push.apple.com/3/device/%s", id)
+
+	url := fmt.Sprintf("https://api.push.apple.com/3/device/%s", id)
+	if os.Getenv("DEV_API") != "" {
+		url = fmt.Sprintf("https://api.sandbox.push.apple.com/3/device/%s", id)
+	}
 
 	client := &http.Client{}
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(data))

@@ -35,6 +35,7 @@ export PRIVKEY=$(cat AuthkeyFromApple.p8 | base64)
 export AUTH_KEY_ID="ABCDEFGHIJ" # should be AuthKey_NAMEHERE.p8
 export TEAM_ID="1234567890" # unique teamid on apple
 export TOPIC="org.supernetworks.app" # appid
+#export DEV_API=1 # use api.sandbox.push.apple.com, default is api.push.apple.com
 ```
 
 start http proxy server:
