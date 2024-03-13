@@ -9,4 +9,4 @@ FROM alpine
 RUN apk --no-cache add ca-certificates
 COPY --from=builder /proxy /proxy
 WORKDIR /
-CMD ["/proxy"]
+CMD ["/proxy", "-ip=0.0.0.0"]
