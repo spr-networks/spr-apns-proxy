@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY . .
 
-go build -o /proxy cmd/main.go
+RUN go build -o /proxy cmd/main.go
 
 FROM alpine
 RUN apk --no-cache add ca-certificates
