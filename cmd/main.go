@@ -1,4 +1,4 @@
-//command to test sending a notification
+//command to test sending a notification or run server 
 package main
 
 import (
