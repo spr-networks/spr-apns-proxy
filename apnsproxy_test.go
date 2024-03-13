@@ -49,7 +49,7 @@ func TestDeviceAlert(t *testing.T) {
 	}
 }
 
-//NOTE only b64 for now
+// NOTE only b64 for now
 func TestDeviceAlertEncrypted(t *testing.T) {
 	t.Log("send encrypted notification")
 
