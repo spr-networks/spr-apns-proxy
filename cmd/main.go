@@ -1,3 +1,4 @@
+//command to test sending a notification
 package main
 
 import (
