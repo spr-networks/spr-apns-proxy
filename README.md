@@ -4,16 +4,19 @@ Proxy notifications to Apple Push Notification Service
 
 # Description
 
-Apple push notifications requires sending alerts using a token connected to a appleid.
-SPR try not to have any centralized parts we use this proxy to forward notifications to Apple, and from there its pushed to your ios device.
-If you want to you can either opt out of this in the app or setup your own notification key & talk to Apple directly.
+Apple push notifications require sending alerts using a token connected to an appleid.
+SPR tries not to have any centralized parts.
 
-This project is open source & alerts are encrypted from spr to the app & can only be viewed by you.
+We use this proxy to forward notifications to Apple, and from there its pushed to your ios device.
+
+If you want to you can either opt out of this in the app or set up your own notification key & talk to Apple directly.
+
+Alerts are encrypted from spr to the app & can only be viewed by you.
 (See category: "SECRET" in this code and the ios app)
 
 ## Expected JSON
 The proxy server is expecting the same json data from clients as apns
-No special headers is required, use PUT or POST.
+No special headers are required, use PUT or POST.
 
 ### Plaintext Notifications
 ```bash
