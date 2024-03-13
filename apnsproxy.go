@@ -31,6 +31,7 @@ var PrivateKey = os.Getenv("PRIVKEY")
 var AuthKeyId = os.Getenv("AUTH_KEY_ID")
 var TeamId = os.Getenv("TEAM_ID")
 var APNSTopic = os.Getenv("TOPIC")
+var gDebug = os.Getenv("DEBUGLOG") != ""
 
 //NOTE we use the same json struct format as apple here
 
@@ -53,6 +54,7 @@ type APNSAlert struct {
 	Body string `json:"body,omitempty"`
 }
 
+// pkg routine to be used as library
 func SendProxyNotification(host string, id string, a APNS) error {
 	data, _ := json.Marshal(a)
 
@@ -123,8 +125,11 @@ func SendNotificationEncrypted(id string, data string) error {
 	return sendNotificationData(id, postData, "background")
 }
 
+// Send to Apple
 func sendNotificationData(id string, data []byte, pushType string) error {
-	InfoLogger.Println("data=", string(data))
+	if gDebug {
+		InfoLogger.Println("data=", string(data))
+	}
 
 	url := fmt.Sprintf("https://api.push.apple.com/3/device/%s", id)
 	if os.Getenv("DEV_API") != "" {
@@ -190,7 +195,9 @@ func notification(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	InfoLogger.Println("device token=", id)
+	if gDebug {
+		InfoLogger.Println("device token=", id)
+	}
 	data := APNS{}
 
 	err := json.NewDecoder(r.Body).Decode(&data)
